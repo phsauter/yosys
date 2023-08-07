@@ -94,11 +94,12 @@ code
 			int validbits = std::min(GetSize(out),
 									 GetSize(shift_vector) - i * shift_stride);
 			bmux_vector.append(shift_vector.extract(i * shift_stride, validbits));
+			bmux_vector.append(SigSpec(padbit, GetSize(out) - validbits));
 		}
 
 		// Prep the select signal
 		SigSpec bmux_sel = mul_din;
-		bmux_sel.extend_u0(ceil_log2(GetSize(bmux_vector)));
+		bmux_sel.extend_u0(ceil_log2((GetSize(bmux_vector) + GetSize(out) - 1) / GetSize(out)));
 
 		// Pad the vector
 		int vector_targetlen = GetSize(out) << GetSize(bmux_sel);
