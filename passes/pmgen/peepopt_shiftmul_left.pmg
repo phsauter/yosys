@@ -11,6 +11,7 @@ endmatch
 
 match neg
 	if shift->type.in($shift, $shiftx)
+	select neg->type == $neg
 	index <SigSpec> port(neg, \Y) === port(shift, \B)
 	filter !port(shift, \A).empty()
 endmatch
@@ -30,7 +31,7 @@ code shift_amount log2scale
 	} else {
 		// case of `$shl`
 		shift_amount = port(shift, \B);
-		if (!param(neg, \B_SIGNED).as_bool())
+		if (!param(shift, \B_SIGNED).as_bool())
 			shift_amount.append(State::S0);
 	}
 
