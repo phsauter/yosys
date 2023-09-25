@@ -102,6 +102,7 @@ struct PeepoptPass : public Pass {
 
 				pm.setup(module->selected_cells());
 
+				pm.run_shiftadd();
 				pm.run_shiftmul();
 				pm.run_muldiv();
 

@@ -43,6 +43,7 @@ passes/pmgen/peepopt.o: passes/pmgen/peepopt_pm.h
 $(eval $(call add_extra_objs,passes/pmgen/peepopt_pm.h))
 
 PEEPOPT_PATTERN  = passes/pmgen/peepopt_shiftmul.pmg
+PEEPOPT_PATTERN += passes/pmgen/peepopt_shiftadd.pmg
 PEEPOPT_PATTERN += passes/pmgen/peepopt_muldiv.pmg
 
 passes/pmgen/peepopt_pm.h: passes/pmgen/pmgen.py $(PEEPOPT_PATTERN)
