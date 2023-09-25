@@ -92,6 +92,7 @@ struct PeepoptPass : public Pass {
 				pm.ud_shiftmul_right.wshift_mode = wshift_mode;
 
 				pm.run_shiftmul_right();
+				pm.run_shiftadd();
 				pm.run_shiftmul_left();
 				pm.run_muldiv();
 			}
